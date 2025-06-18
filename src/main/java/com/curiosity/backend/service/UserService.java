@@ -16,7 +16,7 @@ public class UserService {
             e.printStackTrace();
             throw new RuntimeException("Error al cifrar la contraseña.");
         }
-        return userRepository.saveUser(user);
+        return userRepository.save(user);
     }
 
     public User getUserByAuthentication(String email, String password) {
