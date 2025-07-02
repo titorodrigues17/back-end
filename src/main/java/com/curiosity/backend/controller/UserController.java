@@ -30,7 +30,7 @@ public class UserController {
 
     @PostMapping("/sign-in")
     public Object authenticateUser(@RequestBody User credentials) {
-        ResponseFailed responseFailed = new ResponseFailed("Credenciales incorrectas", "AUTHENTICATION_FAILED");
+        ResponseFailed responseFailed = new ResponseFailed("Credenciales incorrectas", "CODE001");
         User user = userService.getUserByAuthentication(credentials.getEmail(), credentials.getPassword());
         if (user != null) {
             return new ApiResponse<>(true, "Usuario autenticado con éxito", user);
