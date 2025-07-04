@@ -16,6 +16,10 @@ public class UserService {
     public User saveUser(User user) {
         try {String encryptedPassword = AesService.encrypt(user.getPassword());
             user.setPassword(encryptedPassword);
+            final User existingUser = userRepository.findUserByEmail(user.getEmail());
+            if (existingUser != null) {
+               return null;
+            }
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException("Error al cifrar la contraseña.");

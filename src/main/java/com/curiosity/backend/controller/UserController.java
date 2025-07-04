@@ -20,7 +20,7 @@ public class UserController {
     @PostMapping
     public Object saveUser(@RequestBody User user) {
         User savedUser = userService.saveUser(user);
-        ResponseFailed responseFailed = new ResponseFailed("Error al crear el usuario", "USER_CREATION_FAILED");
+        ResponseFailed responseFailed = new ResponseFailed("Usuario existe en el sistema", "002");
         if (savedUser != null) {
             return new ApiResponse<>(true, "Usuario creado con éxito", savedUser);
         } else {
